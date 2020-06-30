@@ -5,8 +5,41 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EmployeesApp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow"
+        Height="auto"
+        Width="auto">
     <Grid>
-        
+        <DataGrid HorizontalAlignment="Left"
+                  Height="336"
+                  Margin="11,9,0,0"
+                  VerticalAlignment="Top"
+                  Width="734"
+                  RenderTransformOrigin="0.5,0.5">
+            <DataGrid.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform />
+                    <SkewTransform />
+                    <RotateTransform Angle="-0.361" />
+                    <TranslateTransform />
+                </TransformGroup>
+            </DataGrid.RenderTransform>
+        </DataGrid>
+        <Button Content="Add Employee"
+                HorizontalAlignment="Left"
+                Margin="10,360,0,0"
+                VerticalAlignment="Top"
+                Width="110"
+                RenderTransformOrigin="0.133,0" />
+        <Button Content="Edit Employee"
+                HorizontalAlignment="Left"
+                Margin="125,360,0,0"
+                VerticalAlignment="Top"
+                Width="110" />
+        <Button Content="Delete Employee"
+                HorizontalAlignment="Left"
+                Margin="240,360,0,0"
+                VerticalAlignment="Top"
+                Width="110"
+                RenderTransformOrigin="0.533,15.5" />
     </Grid>
 </Window>
