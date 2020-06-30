@@ -28,5 +28,6 @@ namespace EmployeesApp.Model
         public virtual DbSet<tblEmployee> tblEmployees { get; set; }
         public virtual DbSet<tblGender> tblGenders { get; set; }
         public virtual DbSet<tblSector> tblSectors { get; set; }
+        public virtual DbSet<vwEmployee> vwEmployees { get; set; }
     }
 }

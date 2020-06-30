@@ -10,6 +10,7 @@
         <EntityTypeShape EntityType="EmployeesModel.tblSector" Width="1.5" PointX="5" PointY="2" IsExpanded="true" />
         <AssociationConnector Association="EmployeesModel.FK__tblEmploy__Gende__5812160E" ManuallyRouted="false" />
         <AssociationConnector Association="EmployeesModel.FK__tblEmploy__Secto__59063A47" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="EmployeesModel.vwEmployee" Width="1.5" PointX="8.25" PointY="0.5" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

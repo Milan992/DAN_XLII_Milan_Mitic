@@ -12,6 +12,9 @@ drop table tblSector;
 if exists (SELECT name FROM sys.sysobjects WHERE name = 'tblGender')
 drop table tblGender;
 
+if exists (SELECT name FROM sys.sysobjects WHERE name = 'vwEmployee')
+drop table vwEmployee;
+
 
 Create table tblGender (
 GenderID int identity (1,1) primary key,
@@ -44,4 +47,5 @@ values('Female');
 
 insert into tblGender (Gender)
 values('Other');
+
 

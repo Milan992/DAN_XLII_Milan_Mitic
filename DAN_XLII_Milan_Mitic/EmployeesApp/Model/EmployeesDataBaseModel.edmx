@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="EmployeesModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="EmployeesModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="tblEmployee">
           <Key>
             <PropertyRef Name="EmployeeID" />
@@ -34,7 +34,33 @@
           <Property Name="SectorID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="SectorName" Type="varchar" MaxLength="10" />
         </EntityType>
-        <Association Name="FK__tblEmploy__Gende__5812160E">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Employees.dbo.vwEmployee' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vwEmployee">
+          <Key>
+            <PropertyRef Name="EmployeeID" />
+            <PropertyRef Name="FullName" />
+            <PropertyRef Name="DateOfBirth" />
+            <PropertyRef Name="IdCardNumber" />
+            <PropertyRef Name="JMBG" />
+            <PropertyRef Name="GenderID" />
+            <PropertyRef Name="PhoneNumber" />
+            <PropertyRef Name="SectorID" />
+            <PropertyRef Name="LocationOfEmployee" />
+            <PropertyRef Name="Manager" />
+          </Key>
+          <Property Name="EmployeeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FullName" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="DateOfBirth" Type="date" Nullable="false" />
+          <Property Name="IdCardNumber" Type="char" MaxLength="9" Nullable="false" />
+          <Property Name="JMBG" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="GenderID" Type="int" Nullable="false" />
+          <Property Name="PhoneNumber" Type="int" Nullable="false" />
+          <Property Name="SectorID" Type="int" Nullable="false" />
+          <Property Name="LocationOfEmployee" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Manager" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__tblEmploy__Gende__72C60C4A">
           <End Role="tblGender" Type="Self.tblGender" Multiplicity="1" />
           <End Role="tblEmployee" Type="Self.tblEmployee" Multiplicity="*" />
           <ReferentialConstraint>
@@ -46,7 +72,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblEmploy__Secto__59063A47">
+        <Association Name="FK__tblEmploy__Secto__73BA3083">
           <End Role="tblSector" Type="Self.tblSector" Multiplicity="1" />
           <End Role="tblEmployee" Type="Self.tblEmployee" Multiplicity="*" />
           <ReferentialConstraint>
@@ -62,17 +88,30 @@
           <EntitySet Name="tblEmployee" EntityType="Self.tblEmployee" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblGender" EntityType="Self.tblGender" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblSector" EntityType="Self.tblSector" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__tblEmploy__Gende__5812160E" Association="Self.FK__tblEmploy__Gende__5812160E">
+          <EntitySet Name="vwEmployee" EntityType="Self.vwEmployee" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vwEmployee].[EmployeeID] AS [EmployeeID], 
+    [vwEmployee].[FullName] AS [FullName], 
+    [vwEmployee].[DateOfBirth] AS [DateOfBirth], 
+    [vwEmployee].[IdCardNumber] AS [IdCardNumber], 
+    [vwEmployee].[JMBG] AS [JMBG], 
+    [vwEmployee].[GenderID] AS [GenderID], 
+    [vwEmployee].[PhoneNumber] AS [PhoneNumber], 
+    [vwEmployee].[SectorID] AS [SectorID], 
+    [vwEmployee].[LocationOfEmployee] AS [LocationOfEmployee], 
+    [vwEmployee].[Manager] AS [Manager]
+    FROM [dbo].[vwEmployee] AS [vwEmployee]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK__tblEmploy__Gende__72C60C4A" Association="Self.FK__tblEmploy__Gende__72C60C4A">
             <End Role="tblGender" EntitySet="tblGender" />
             <End Role="tblEmployee" EntitySet="tblEmployee" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblEmploy__Secto__59063A47" Association="Self.FK__tblEmploy__Secto__59063A47">
+          <AssociationSet Name="FK__tblEmploy__Secto__73BA3083" Association="Self.FK__tblEmploy__Secto__73BA3083">
             <End Role="tblSector" EntitySet="tblSector" />
             <End Role="tblEmployee" EntitySet="tblEmployee" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="EmployeesModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -145,7 +184,32 @@
             <End Role="tblSector" EntitySet="tblSectors" />
             <End Role="tblEmployee" EntitySet="tblEmployees" />
           </AssociationSet>
+          <EntitySet Name="vwEmployees" EntityType="EmployeesModel.vwEmployee" />
         </EntityContainer>
+        <EntityType Name="vwEmployee">
+          <Key>
+            <PropertyRef Name="EmployeeID" />
+            <PropertyRef Name="FullName" />
+            <PropertyRef Name="DateOfBirth" />
+            <PropertyRef Name="IdCardNumber" />
+            <PropertyRef Name="JMBG" />
+            <PropertyRef Name="GenderID" />
+            <PropertyRef Name="PhoneNumber" />
+            <PropertyRef Name="SectorID" />
+            <PropertyRef Name="LocationOfEmployee" />
+            <PropertyRef Name="Manager" />
+          </Key>
+          <Property Name="EmployeeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FullName" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="DateOfBirth" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="IdCardNumber" Type="String" Nullable="false" MaxLength="9" FixedLength="true" Unicode="false" />
+          <Property Name="JMBG" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="GenderID" Type="Int32" Nullable="false" />
+          <Property Name="PhoneNumber" Type="Int32" Nullable="false" />
+          <Property Name="SectorID" Type="Int32" Nullable="false" />
+          <Property Name="LocationOfEmployee" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Manager" Type="Int32" Nullable="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -181,6 +245,22 @@
               <MappingFragment StoreEntitySet="tblSector">
                 <ScalarProperty Name="SectorID" ColumnName="SectorID" />
                 <ScalarProperty Name="SectorName" ColumnName="SectorName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwEmployees">
+            <EntityTypeMapping TypeName="EmployeesModel.vwEmployee">
+              <MappingFragment StoreEntitySet="vwEmployee">
+                <ScalarProperty Name="Manager" ColumnName="Manager" />
+                <ScalarProperty Name="LocationOfEmployee" ColumnName="LocationOfEmployee" />
+                <ScalarProperty Name="SectorID" ColumnName="SectorID" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="GenderID" ColumnName="GenderID" />
+                <ScalarProperty Name="JMBG" ColumnName="JMBG" />
+                <ScalarProperty Name="IdCardNumber" ColumnName="IdCardNumber" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
