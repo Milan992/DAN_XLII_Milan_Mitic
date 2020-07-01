@@ -27,7 +27,7 @@
                 <DataGridTextColumn Header="Date of birth"
                                     Binding="{Binding DateOfBirth}" />
                 <DataGridTextColumn Header="ID card"
-                                    Binding="{Binding IDCardNumber}" />
+                                    Binding="{Binding IdCardNumber}" />
                 <DataGridTextColumn Header="JMBG"
                                     Binding="{Binding JMBG}" />
                 <DataGridTextColumn Header="Gender"
