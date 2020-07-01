@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Input;
 
-namespace WpfCharges
+namespace EmployeesApp
 {
     class RelayCommand : ICommand
     {

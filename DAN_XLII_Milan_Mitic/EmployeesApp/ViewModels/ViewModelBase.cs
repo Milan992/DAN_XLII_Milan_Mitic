@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace WpfCharges.ViewModels
+namespace EmployeesApp.ViewModels
 {
     class ViewModelBase : INotifyPropertyChanged
     {
