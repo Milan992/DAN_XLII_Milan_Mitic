@@ -43,6 +43,8 @@
             </DataGrid.Columns>
         </DataGrid>
         <Button Content="Add Employee"
+                Name="btnAddEmployee"
+                Command="{Binding AddNewEmployee}"
                 HorizontalAlignment="Left"
                 Margin="10,360,0,0"
                 VerticalAlignment="Top"

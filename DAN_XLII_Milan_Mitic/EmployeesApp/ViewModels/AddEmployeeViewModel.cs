@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,8 +14,9 @@ namespace EmployeesApp.ViewModels
 {
     class AddEmployeeViewModel : ViewModelBase
     {
-        AddEmployee addEmployee = new AddEmployee();
+        AddEmployee addEmployee;
         Service service = new Service();
+        BackgroundWorker worker = new BackgroundWorker();
 
         //constructors
 
@@ -23,19 +25,26 @@ namespace EmployeesApp.ViewModels
             employee = new tblEmployee();
             addEmployee = addEmployeeOpen;
 
+            worker.DoWork += worker_DoWork;
+
             LocationList = service.GetAllLocations();
-            ManagerList = service.GetAllManagers(Employee.JMBG);
+           // ManagerList = service.GetAllManagers(Employee.JMBG);
         }
 
         public AddEmployeeViewModel(AddEmployee addEmployeeOpen, tblEmployee employeeEdit)
         {
             employee = employeeEdit;
             addEmployee = addEmployeeOpen;
+            worker.DoWork += worker_DoWork;
 
             LocationList = service.GetAllLocations();
-            ManagerList = service.GetAllManagers(Employee.JMBG);
+          //  ManagerList = service.GetAllManagers(Employee.JMBG);
         }
 
+        private void worker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            service.AddEmployee(employee, sector, location);
+        }
         // properties
 
         private tblEmployee employee;
@@ -122,9 +131,14 @@ namespace EmployeesApp.ViewModels
         {
             try
             {
-                Service service = new Service();
-                service.AddEmployee(Employee, Sector, Location);
-                addEmployee.Close();
+                try
+                {
+                    worker.RunWorkerAsync();
+                }
+                catch
+                {
+                    MessageBox.Show("Already saving. . .");
+                }
             }
             catch (Exception ex)
             {
@@ -134,7 +148,7 @@ namespace EmployeesApp.ViewModels
 
         private bool CanSaveExecute()
         {
-            if (true)// validacija jmbg
+            if (string.IsNullOrEmpty(employee.JMBG))    // validacija jmbg
             {
                 return false;
             }

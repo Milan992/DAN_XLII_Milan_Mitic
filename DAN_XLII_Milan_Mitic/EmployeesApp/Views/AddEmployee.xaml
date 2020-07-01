@@ -8,8 +8,10 @@
         Title="Add Employee"
         Height="350"
         Width="400">
+
     <Grid>
         <Button Content="Save"
+                Command="{Binding Save, UpdateSourceTrigger=PropertyChanged}"
                 HorizontalAlignment="Left"
                 Margin="10,289,0,0"
                 VerticalAlignment="Top"
@@ -28,9 +30,10 @@
                  Height="23"
                  Margin="120,14,0,0"
                  TextWrapping="Wrap"
-                 Text=""
+                 Text="{Binding Employee.FullName, UpdateSourceTrigger=PropertyChanged}"
                  VerticalAlignment="Top"
                  Width="120" />
+        
         <Label Content="ID card number:"
                HorizontalAlignment="Left"
                Margin="20,39,0,0"
@@ -40,7 +43,7 @@
                  Height="23"
                  Margin="120,42,0,0"
                  TextWrapping="Wrap"
-                 Text=""
+                 Text="{Binding Employee.IdCardNumber, UpdateSourceTrigger=PropertyChanged}"
                  VerticalAlignment="Top"
                  Width="120" />
         <Label Content="JMBG:"
@@ -52,7 +55,7 @@
                  Height="23"
                  Margin="120,70,0,0"
                  TextWrapping="Wrap"
-                 Text=""
+                 Text="{Binding Employee.JMBG, UpdateSourceTrigger=PropertyChanged}"
                  VerticalAlignment="Top"
                  Width="120" />
         <Label Content="Gender:"
@@ -62,7 +65,9 @@
         <ComboBox HorizontalAlignment="Left"
                   Margin="120,98,0,0"
                   VerticalAlignment="Top"
-                  Width="120" />
+                  Width="120"
+                  ItemsSource="{Binding GenderList, UpdateSourceTrigger=PropertyChanged}"
+                  SelectedItem="{Binding Gender, UpdateSourceTrigger=PropertyChanged}" />
         <Label Content="Phone number:"
                HorizontalAlignment="Left"
                Margin="24,122,0,0"

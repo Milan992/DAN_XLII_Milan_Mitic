@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using EmployeesApp.Model;
@@ -64,9 +65,23 @@ namespace EmployeesApp
             throw new NotImplementedException();
         }
 
-        internal void AddEmployee(tblEmployee employee, string sector, object location)
+        internal void AddEmployee(tblEmployee employee, string sector, string location)
         {
-            throw new NotImplementedException();
+            Thread.Sleep(2000);
+            try
+            {
+                using (EmployeesEntities context = new EmployeesEntities())
+                {
+                    employee.SectorID = Convert.ToInt32(sector);
+                    employee.LocationOfEmployee = location;
+                    context.tblEmployees.Add(employee);
+                    context.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.Write("Exception" + ex.Message.ToString());
+            }
         }
     }
 }
