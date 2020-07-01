@@ -15,7 +15,7 @@
           <Property Name="IdCardNumber" Type="char" MaxLength="9" Nullable="false" />
           <Property Name="JMBG" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="GenderID" Type="int" Nullable="false" />
-          <Property Name="PhoneNumber" Type="int" Nullable="false" />
+          <Property Name="PhoneNumber" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="SectorID" Type="int" Nullable="false" />
           <Property Name="LocationOfEmployee" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="Manager" Type="int" Nullable="false" />
@@ -55,12 +55,12 @@ warning 6002: The table/view 'Employees.dbo.vwEmployee' does not have a primary 
           <Property Name="IdCardNumber" Type="char" MaxLength="9" Nullable="false" />
           <Property Name="JMBG" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="GenderID" Type="int" Nullable="false" />
-          <Property Name="PhoneNumber" Type="int" Nullable="false" />
+          <Property Name="PhoneNumber" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="SectorID" Type="int" Nullable="false" />
           <Property Name="LocationOfEmployee" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="Manager" Type="int" Nullable="false" />
         </EntityType>
-        <Association Name="FK__tblEmploy__Gende__72C60C4A">
+        <Association Name="FK__tblEmploy__Gende__3A4CA8FD">
           <End Role="tblGender" Type="Self.tblGender" Multiplicity="1" />
           <End Role="tblEmployee" Type="Self.tblEmployee" Multiplicity="*" />
           <ReferentialConstraint>
@@ -72,7 +72,7 @@ warning 6002: The table/view 'Employees.dbo.vwEmployee' does not have a primary 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblEmploy__Secto__73BA3083">
+        <Association Name="FK__tblEmploy__Secto__3B40CD36">
           <End Role="tblSector" Type="Self.tblSector" Multiplicity="1" />
           <End Role="tblEmployee" Type="Self.tblEmployee" Multiplicity="*" />
           <ReferentialConstraint>
@@ -102,11 +102,11 @@ warning 6002: The table/view 'Employees.dbo.vwEmployee' does not have a primary 
     [vwEmployee].[Manager] AS [Manager]
     FROM [dbo].[vwEmployee] AS [vwEmployee]</DefiningQuery>
           </EntitySet>
-          <AssociationSet Name="FK__tblEmploy__Gende__72C60C4A" Association="Self.FK__tblEmploy__Gende__72C60C4A">
+          <AssociationSet Name="FK__tblEmploy__Gende__3A4CA8FD" Association="Self.FK__tblEmploy__Gende__3A4CA8FD">
             <End Role="tblGender" EntitySet="tblGender" />
             <End Role="tblEmployee" EntitySet="tblEmployee" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblEmploy__Secto__73BA3083" Association="Self.FK__tblEmploy__Secto__73BA3083">
+          <AssociationSet Name="FK__tblEmploy__Secto__3B40CD36" Association="Self.FK__tblEmploy__Secto__3B40CD36">
             <End Role="tblSector" EntitySet="tblSector" />
             <End Role="tblEmployee" EntitySet="tblEmployee" />
           </AssociationSet>
@@ -125,7 +125,7 @@ warning 6002: The table/view 'Employees.dbo.vwEmployee' does not have a primary 
           <Property Name="IdCardNumber" Type="String" MaxLength="9" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="JMBG" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="GenderID" Type="Int32" Nullable="false" />
-          <Property Name="PhoneNumber" Type="Int32" Nullable="false" />
+          <Property Name="PhoneNumber" Type="String" Nullable="false" />
           <Property Name="SectorID" Type="Int32" Nullable="false" />
           <Property Name="LocationOfEmployee" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Manager" Type="Int32" Nullable="false" />
@@ -205,7 +205,7 @@ warning 6002: The table/view 'Employees.dbo.vwEmployee' does not have a primary 
           <Property Name="IdCardNumber" Type="String" Nullable="false" MaxLength="9" FixedLength="true" Unicode="false" />
           <Property Name="JMBG" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="GenderID" Type="Int32" Nullable="false" />
-          <Property Name="PhoneNumber" Type="Int32" Nullable="false" />
+          <Property Name="PhoneNumber" Type="String" Nullable="false" />
           <Property Name="SectorID" Type="Int32" Nullable="false" />
           <Property Name="LocationOfEmployee" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="Manager" Type="Int32" Nullable="false" />
