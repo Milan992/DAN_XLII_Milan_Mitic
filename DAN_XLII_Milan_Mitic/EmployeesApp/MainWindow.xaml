@@ -5,8 +5,61 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EmployeesApp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Welcome!"
+        Height="auto"
+        Width="auto">
     <Grid>
-        
+        <DataGrid Name="DataGridUsers"
+                  ItemsSource="{Binding EmployeesList, UpdateSourceTrigger=PropertyChanged}"
+                  SelectedItem="{Binding Employee, UpdateSourceTrigger=PropertyChanged}"
+                  IsReadOnly="True"
+                  HeadersVisibility="Column"
+                  AutoGenerateColumns="False"
+                  HorizontalGridLinesBrush="Black"
+                  BorderBrush="Black"
+                  Foreground="Black"
+                  FontWeight="Bold"
+                  Height="250"
+                  Margin="10,10,20,169">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Name"
+                                    Binding="{Binding FullName}" />
+                <DataGridTextColumn Header="Date of birth"
+                                    Binding="{Binding DateOfBirth}" />
+                <DataGridTextColumn Header="ID card"
+                                    Binding="{Binding IdCardNumber}" />
+                <DataGridTextColumn Header="JMBG"
+                                    Binding="{Binding JMBG}" />
+                <DataGridTextColumn Header="Gender"
+                                    Binding="{Binding GenderID}" />
+                <DataGridTextColumn Header="PhoneNumber"
+                                    Binding="{Binding PhoneNumber}" />
+                <DataGridTextColumn Header="SectorID"
+                                    Binding="{Binding SectorID}" />
+                <DataGridTextColumn Header="Location"
+                                    Binding="{Binding LocationOfEmployee}" />
+                <DataGridTextColumn Header="Manager"
+                                    Binding="{Binding Manager}" />
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Content="Add Employee"
+                Name="btnAddEmployee"
+                Command="{Binding AddNewEmployee}"
+                HorizontalAlignment="Left"
+                Margin="10,360,0,0"
+                VerticalAlignment="Top"
+                Width="110"
+                RenderTransformOrigin="0.133,0" />
+        <Button Content="Edit Employee"
+                HorizontalAlignment="Left"
+                Margin="125,360,0,0"
+                VerticalAlignment="Top"
+                Width="110" />
+        <Button Content="Delete Employee"
+                HorizontalAlignment="Left"
+                Margin="240,360,0,0"
+                VerticalAlignment="Top"
+                Width="110"
+                RenderTransformOrigin="0.533,15.5" />
     </Grid>
 </Window>
