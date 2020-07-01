@@ -25,9 +25,9 @@ namespace EmployeesApp.ViewModels
         }
 
         //properties
-        private List<vwEmployee> employeesList;
+        private List<tblEmployee> employeesList;
 
-        public List<vwEmployee> EmployeesList
+        public List<tblEmployee> EmployeesList
         {
             get
             {

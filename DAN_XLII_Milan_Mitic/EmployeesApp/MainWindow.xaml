@@ -9,20 +9,38 @@
         Height="auto"
         Width="auto">
     <Grid>
-        <DataGrid HorizontalAlignment="Left"
-                  Height="336"
-                  Margin="11,9,0,0"
-                  VerticalAlignment="Top"
-                  Width="734"
-                  RenderTransformOrigin="0.5,0.5">
-            <DataGrid.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform />
-                    <SkewTransform />
-                    <RotateTransform Angle="-0.361" />
-                    <TranslateTransform />
-                </TransformGroup>
-            </DataGrid.RenderTransform>
+        <DataGrid Name="DataGridUsers"
+                  ItemsSource="{Binding EmployeesList, UpdateSourceTrigger=PropertyChanged}"
+                  SelectedItem="{Binding Employee, UpdateSourceTrigger=PropertyChanged}"
+                  IsReadOnly="True"
+                  HeadersVisibility="Column"
+                  AutoGenerateColumns="False"
+                  HorizontalGridLinesBrush="Black"
+                  BorderBrush="Black"
+                  Foreground="Black"
+                  FontWeight="Bold"
+                  Height="250"
+                  Margin="10,10,20,169">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Name"
+                                    Binding="{Binding FullName}" />
+                <DataGridTextColumn Header="Date of birth"
+                                    Binding="{Binding DateOfBirth}" />
+                <DataGridTextColumn Header="ID card"
+                                    Binding="{Binding IDCardNumber}" />
+                <DataGridTextColumn Header="JMBG"
+                                    Binding="{Binding JMBG}" />
+                <DataGridTextColumn Header="Gender"
+                                    Binding="{Binding GenderID}" />
+                <DataGridTextColumn Header="PhoneNumber"
+                                    Binding="{Binding PhoneNumber}" />
+                <DataGridTextColumn Header="SectorID"
+                                    Binding="{Binding SectorID}" />
+                <DataGridTextColumn Header="Location"
+                                    Binding="{Binding LocationOfEmployee}" />
+                <DataGridTextColumn Header="Manager"
+                                    Binding="{Binding Manager}" />
+            </DataGrid.Columns>
         </DataGrid>
         <Button Content="Add Employee"
                 HorizontalAlignment="Left"

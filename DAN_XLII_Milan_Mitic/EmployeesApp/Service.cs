@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using EmployeesApp.Model;
 
 namespace EmployeesApp
 {
@@ -33,6 +34,39 @@ namespace EmployeesApp
                 MessageBox.Show("There are no locations available");
             }
             return locations;
+        }
+
+        public List<tblEmployee> GetAllEmployees()
+        {
+            try
+            {
+                using (EmployeesEntities context = new EmployeesEntities())
+                {
+                    List<tblEmployee> list = new List<tblEmployee>();
+                    list = (from x in context.tblEmployees select x).ToList();
+                    return list;
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.Write("Exception" + ex.Message.ToString());
+                return null;
+            }
+        }
+
+        public List<tblEmployee> GetAllManagers(string jMBG)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DeleteEmployee(string jMBG)
+        {
+            throw new NotImplementedException();
+        }
+
+        internal void AddEmployee(tblEmployee employee, string sector, object location)
+        {
+            throw new NotImplementedException();
         }
     }
 }
